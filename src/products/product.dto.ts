@@ -32,5 +32,5 @@ export class ProductDto {
 
   @IsOptional()
   @IsBoolean()
-  isCountable?: boolean;
+  countable?: boolean;
 }

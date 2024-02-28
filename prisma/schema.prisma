@@ -37,33 +37,33 @@ model Blog {
   @@map("blogs")
 }
 
-// model Product {
-//   id           Int      @id @default(autoincrement())
-//   name         String
-//   description  String
-//   pictureUrl   String?
-//   availability Boolean
-//   quantity     Int
-//   countable    Boolean
-//   price        Float
-//   createdAt    DateTime @default(now())
-//   updatedAt    DateTime @updatedAt
-//   categoryId     Category[]
+model Product {
+  id           Int      @id @default(autoincrement())
+  name         String
+  description  String
+  pictureUrl   String?
+  availability Boolean
+  quantity     Int
+  countable    Boolean? @default(true)
+  price        Float
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  categoryId     Int
 
-// category  Category @relation(fields: [categoryId], references: [id])
+category  Category @relation(fields: [categoryId], references: [id])
 
-//   @@map("products")
-// }
+  @@map("products")
+}
 
-// model Category {
-//   id          Int      @id @default(autoincrement())
-//   name        String
-//   description String
-//   pictureUrl  String?
-//   createdAt   DateTime @default(now())
-//   updatedAt   DateTime @updatedAt
-//   product     Product[]
+model Category {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  pictureUrl  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  Product     Product[]
 
 
-//   @@map("categories")
-// }
+  @@map("categories")
+}

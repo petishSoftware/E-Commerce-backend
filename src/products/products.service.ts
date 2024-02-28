@@ -1,25 +1,30 @@
+// src/product/product.service.ts
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ProductDto } from './product.dto';
 
 @Injectable()
 export class ProductService {
-//   constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-//   async createProduct(dto: ProductDto) {
-//     return this.prisma.product.create({
-//       data: {
-//         name: dto.name,
-//         price: dto.price,
-//         description: dto.description,
-//         category: {
-//           connect: { id: dto.categoryId },
-//         },
-//       },
-//     });
-//   }
+  async createProduct(dto: ProductDto) {
+    return this.prisma.product.create({
+      data: {
+        name: dto.name,
+        price: dto.price,
+        description: dto.description,
+        pictureUrl: dto.picture,  // Assuming this is a URL to the product picture
+        availability: dto.availability,
+        quantity: dto.quantity,
+        countable: dto.countable,
+        category: {
+          connect: { id: dto.categoryId },
+        },
+      },
+    });
+  }
 
-//   async getAllProducts() {
-//     return this.prisma.product.findMany();
-//   }
+  async getAllProducts() {
+    return this.prisma.product.findMany();
+  }
 }
