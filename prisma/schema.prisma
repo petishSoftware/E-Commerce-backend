@@ -21,6 +21,7 @@ model User {
   firstName String
   lastName  String?
   Blog      Blog[]
+  Order     Order[]
 
   @@map("users")
 }
@@ -66,4 +67,19 @@ model Category {
 
 
   @@map("categories")
+}
+
+model Order {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items     Json     // Store order items as JSON
+  total     Float
+  status    String
+  payment   Float
+  customer  String
+  location  String
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
 }

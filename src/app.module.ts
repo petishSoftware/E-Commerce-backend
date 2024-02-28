@@ -5,6 +5,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { BlogModule } from './blog/blog.module';
 import { CategoriesModule } from './categories/categories.module';
 import { ProductsModule } from './products/products.module';
+import { OrdersModule } from './orders/orders.module';
 
 
 @Module({
@@ -18,6 +19,7 @@ import { ProductsModule } from './products/products.module';
     BlogModule,
     CategoriesModule,
     ProductsModule,
+    OrdersModule,
      
     ],
   controllers: [],
